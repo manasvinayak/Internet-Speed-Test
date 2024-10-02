@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            To detect network speed using Javascript
+        </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let userImageLink = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200714180638/CIP_Launch-banner.png";
+            let time_start, end_time;
+            let downloadSize = 5616998;
+            let downloadImageSrc = new Image();
+            downloadImageSrc.onload = function() {
+                end_time = new Date().getTime();
+                displaySpeed();
+            };
+            time_start = new Date().getTime();
+            downloadImageSrc.src = userImageLink;
+
+            function displaySpeed(){
+                let timeDuration = (end_time - time_start)/1000;
+                let loadedbits = downloadSize*8;
+                let bps = (loadedbits/timeDuration).toFixed(2);
+                let Kbps = (bps/1024).toFixed(2);
+                let Mbps = (Kbps/1024).toFixed(2);
+                alert("Your internet speed is: \n" + bps + "bps\n" + Kbps + " kbps\n" + Mbps + " Mbps\n");
+            }
+        </script>
+    </body>
+</html>
